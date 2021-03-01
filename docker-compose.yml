@@ -19,7 +19,7 @@ services:
     build:
       context: ../dataportal
       dockerfile: backend/Dockerfile
-      target: test
+      target: dev
     ports:
       - "3001:3000"
     depends_on:
