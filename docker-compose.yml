@@ -2,27 +2,32 @@ version: "3.9"
 services:
   dataportal-backend:
     build:
-      context: ../dataportal/backend
+      context: ../dataportal
+      dockerfile: backend/Dockerfile
       target: dev
     ports:
       - "3000:3000"
     depends_on:
       - "dataportal-db"
     volumes:
-      - ../dataportal/backend:/app
+      - ../dataportal/backend/src:/app/src
+      - ../dataportal/shared:/shared
     environment:
       NODE_ENV: docker
     command: ["scripts/wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "run", "start-dev"]
   dataportal-backend-test:
     build:
-      context: ../dataportal/backend
+      context: ../dataportal
+      dockerfile: backend/Dockerfile
       target: test
     ports:
       - "3001:3000"
     depends_on:
       - "dataportal-db"
     volumes:
-      - ../dataportal/backend:/app
+      - ../dataportal/backend/src:/app/src
+      - ../dataportal/backend/tests:/app/tests
+      - ../dataportal/shared:/shared
     environment:
       NODE_ENV: test
     command: ["scripts/wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "run", "start-dev"]
