@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  dataportal-backend:
+    build:
+      context: ../dataportal/backend
+      target: dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "dataportal-db"
+    volumes:
+      - ../dataportal/backend:/app
+    environment:
+      NODE_ENV: docker
+    command: ["scripts/wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "run", "start-dev"]
+  dataportal-backend-test:
+    build:
+      context: ../dataportal/backend
+      target: test
+    ports:
+      - "3001:3000"
+    depends_on:
+      - "dataportal-db"
+    volumes:
+      - ../dataportal/backend:/app
+    environment:
+      NODE_ENV: test
+    command: ["scripts/wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "run", "start-dev"]
+  dataportal-db:
+    image: "postgres:13"
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: dataportal
+      POSTGRES_USER: dataportal
+      POSTGRES_PASSWORD: dev
