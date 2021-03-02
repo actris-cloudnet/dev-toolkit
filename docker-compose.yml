@@ -57,3 +57,5 @@ services:
     depends_on:
       - "dataportal-backend"
     command: ["npm", "run", "serve"]
+  moto-server:
+    image: "motoserver/moto"
