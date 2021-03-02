@@ -33,6 +33,7 @@ services:
     command: ["scripts/wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "run", "start-test"]
   dataportal-db:
     image: "postgres:13"
+    user: postgres
     volumes:
       - ./db/data:/var/lib/postgresql/data
       - ./db/initdb.d:/docker-entrypoint-initdb.d
