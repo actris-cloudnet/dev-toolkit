@@ -43,3 +43,16 @@ services:
       POSTGRES_DB: dataportal
       POSTGRES_USER: dataportal
       POSTGRES_PASSWORD: dev
+  dataportal-frontend:
+    build:
+      context: ../dataportal
+      dockerfile: frontend/Dockerfile
+      target: dev
+    volumes:
+      - ../dataportal/frontend/src:/app/src
+      - ../dataportal/backend/src/entity:/backend/src/entity
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "dataportal-backend"
+    command: ["npm", "run", "serve"]
