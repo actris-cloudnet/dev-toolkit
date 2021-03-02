@@ -59,3 +59,18 @@ services:
     command: ["npm", "run", "serve"]
   moto-server:
     image: "motoserver/moto"
+  storage-service:
+    build:
+      context: ../storage-service
+      target: dev
+    ports:
+      - "5900:5900"
+    volumes:
+      - ../storage-service/src:/app/src
+    environment:
+      SS_MODE: local
+      PGUSER: "ss"
+      PGPASSWORD: "dev"
+      PGHOST: "dataportal-db"
+      PGDATABASE: "ss"
+    command: ["./wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "start"]
