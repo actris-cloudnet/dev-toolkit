@@ -21,7 +21,7 @@ services:
       dockerfile: backend/Dockerfile
       target: dev
     ports:
-      - "3001:3000"
+      - "3001:3001"
     depends_on:
       - "dataportal-db"
     volumes:
@@ -29,14 +29,17 @@ services:
       - ../dataportal/backend/tests:/app/tests
       - ../dataportal/shared:/shared
     environment:
-      NODE_ENV: test
-    command: ["scripts/wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "run", "start-dev"]
+      NODE_ENV: docker-test
+    command: ["scripts/wait-for-it.sh", "dataportal-db:5432", "-t", "120", "--", "npm", "run", "start-test"]
   dataportal-db:
     image: "postgres:13"
     volumes:
       - ./db/data:/var/lib/postgresql/data
       - ./db/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "54321:5432"
     environment:
+      TZ: "Europe/Helsinki"
       POSTGRES_DB: dataportal
       POSTGRES_USER: dataportal
       POSTGRES_PASSWORD: dev
