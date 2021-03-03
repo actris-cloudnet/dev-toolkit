@@ -85,3 +85,7 @@ services:
       PGHOST: "dataportal-db"
       PGDATABASE: "ss"
     command: ["npm", "start"]
+  pid-service:
+    build: ../pid-service
+    ports:
+      - "5800:5800"
