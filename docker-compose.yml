@@ -87,3 +87,13 @@ services:
     build: ../pid-service
     ports:
       - "5800:5800"
+  data-processing:
+    build: ../data-processing
+    depends_on:
+      - "dataportal-backend"
+      - "storage-service"
+      - "pid-service"
+    volumes:
+      - ../data-processing/scripts:/app/scripts
+      - ../data-processing/src:/app/src
+      - ../data-processing/tests:/app/tests
