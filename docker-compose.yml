@@ -42,9 +42,9 @@ services:
       - "54321:5432"
     environment:
       TZ: "Europe/Helsinki"
-      POSTGRES_DB: dataportal
-      POSTGRES_USER: dataportal
-      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: $PGDATABASE
+      POSTGRES_USER: $PGUSER
+      POSTGRES_PASSWORD: $PGPASSWORD
       PGUSER: ss
     healthcheck:
      test: ["CMD", "psql", "-c", "select 1"]
@@ -77,11 +77,11 @@ services:
     volumes:
       - ../storage-service/src:/app/src
     environment:
-      SS_MODE: local
-      PGUSER: "ss"
-      PGPASSWORD: "dev"
-      PGHOST: "dataportal-db"
-      PGDATABASE: "ss"
+      - SS_MODE
+      - PGUSER=ss
+      - PGPASSWORD
+      - PGHOST
+      - PGDATABASE=ss
     command: ["npm", "start"]
   pid-service:
     build: ../pid-service
