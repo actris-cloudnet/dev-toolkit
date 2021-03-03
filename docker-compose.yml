@@ -35,7 +35,6 @@ services:
     command: ["npm", "run", "start-test"]
   dataportal-db:
     image: "postgres:13"
-    user: postgres
     volumes:
       - ./db/data:/var/lib/postgresql/data
       - ./db/initdb.d:/docker-entrypoint-initdb.d
@@ -46,12 +45,11 @@ services:
       POSTGRES_DB: dataportal
       POSTGRES_USER: dataportal
       POSTGRES_PASSWORD: dev
-      PGUSER: dataportal
+      PGUSER: ss
     healthcheck:
      test: ["CMD", "psql", "-c", "select 1"]
      interval: 1s
      retries: 120
-
   dataportal-frontend:
     build:
       context: ../dataportal
