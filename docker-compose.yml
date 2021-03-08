@@ -22,7 +22,7 @@ services:
     image: dataportal-backend
     pull_policy: never
     ports:
-      - "3001:3001"
+      - "3001:3000"
     depends_on:
       dataportal-db:
         condition: service_healthy
