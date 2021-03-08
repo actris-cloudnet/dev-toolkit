@@ -15,8 +15,8 @@ services:
     volumes:
       - ../dataportal/backend/src:/app/src
       - ../dataportal/shared:/shared
-    environment:
-      NODE_ENV: docker
+    env_file:
+      - ../dataportal/backend/dev.env
     command: ["npm", "run", "start-dev"]
   dataportal-backend-test:
     image: dataportal-backend
@@ -32,8 +32,8 @@ services:
       - ../dataportal/backend/src:/app/src
       - ../dataportal/backend/tests:/app/tests
       - ../dataportal/shared:/shared
-    environment:
-      NODE_ENV: docker-test
+    env_file:
+      - ../dataportal/backend/test.env
     command: ["npm", "run", "start-test"]
   dataportal-db:
     image: "postgres:13"
