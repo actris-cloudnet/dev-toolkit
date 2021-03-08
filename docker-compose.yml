@@ -10,7 +10,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      dataportal-db:
+      db:
         condition: service_healthy
     volumes:
       - ../dataportal/backend/src:/app/src
@@ -24,7 +24,7 @@ services:
     ports:
       - "3001:3000"
     depends_on:
-      dataportal-db:
+      db:
         condition: service_healthy
       dataportal-backend:
         condition: service_started
@@ -35,7 +35,7 @@ services:
     env_file:
       - ../dataportal/backend/test.env
     command: ["npm", "run", "start-test"]
-  dataportal-db:
+  db:
     image: "postgres:13"
     volumes:
       - ./db/data:/var/lib/postgresql/data
@@ -72,7 +72,7 @@ services:
     ports:
       - "5900:5900"
     depends_on:
-      dataportal-db:
+      db:
         condition: service_healthy
       moto-server:
         condition: service_started
