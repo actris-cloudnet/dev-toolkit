@@ -1,6 +1,8 @@
 version: "3.9"
 services:
   dataportal-backend:
+    image: dataportal-backend
+    pull_policy: never
     build:
       context: ../dataportal
       dockerfile: backend/Dockerfile
@@ -17,15 +19,15 @@ services:
       NODE_ENV: docker
     command: ["npm", "run", "start-dev"]
   dataportal-backend-test:
-    build:
-      context: ../dataportal
-      dockerfile: backend/Dockerfile
-      target: dev
+    image: dataportal-backend
+    pull_policy: never
     ports:
       - "3001:3001"
     depends_on:
       dataportal-db:
         condition: service_healthy
+      dataportal-backend:
+        condition: service_started
     volumes:
       - ../dataportal/backend/src:/app/src
       - ../dataportal/backend/tests:/app/tests
@@ -82,7 +84,7 @@ services:
       - PGPASSWORD
       - PGHOST
       - PGDATABASE=ss
-    command: ["npm", "start"]
+    command: ["npm", "run", "start-dev"]
   pid-service:
     build: ../pid-service
     ports:
