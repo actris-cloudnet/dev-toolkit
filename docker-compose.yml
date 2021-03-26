@@ -102,3 +102,5 @@ services:
       - ../data-processing/scripts:/app/scripts
       - ../data-processing/src:/app/src
       - ../data-processing/tests:/app/tests
+    env_file:
+      - ../data-processing/dev.env
