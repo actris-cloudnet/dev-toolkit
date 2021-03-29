@@ -1,6 +1,8 @@
 # Cloudnet development toolkit
 Docker configuration for running all Cloudnet projects locally.
 
+The toolkit requires Docker version >=20.
+
 Before building this project, make sure that you have cloned the following Cloudnet repositories to the same directory:
 
 - `dev-toolkit`
