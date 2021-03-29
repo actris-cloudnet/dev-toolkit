@@ -8,6 +8,7 @@ Before building this project, make sure that you have cloned the following Cloud
 - `data-processing`
 - `pid-service`
 - `storage-service`
+- `dataportal-resources`
 
 ## Build
 

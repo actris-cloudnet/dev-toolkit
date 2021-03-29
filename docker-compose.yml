@@ -15,6 +15,7 @@ services:
     volumes:
       - ../dataportal/backend/src:/app/src
       - ../dataportal/shared:/shared
+      - ../dataportal-resources:/dataportal-resources
     env_file:
       - ../dataportal/backend/dev.env
     command: ["npm", "run", "start-dev"]
