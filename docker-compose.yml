@@ -105,3 +105,12 @@ services:
       - ../data-processing/tests:/app/tests
     env_file:
       - ../data-processing/dev.env
+  misc-scripts:
+    build: ../misc-scripts
+    depends_on:
+      - "dataportal-backend"
+      - "storage-service"
+    volumes:
+      - ../misc-scripts/:/app
+    env_file:
+      - ../misc-scripts/dev.env
