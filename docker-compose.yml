@@ -82,11 +82,11 @@ services:
         condition: service_started
     volumes:
       - ../storage-service/src:/app/src
+    env_file:
+      - .env
     environment:
       - SS_MODE
       - PGUSER=ss
-      - PGPASSWORD
-      - PGHOST
       - PGDATABASE=ss
     command: ["npm", "run", "start-dev"]
   pid-service:
