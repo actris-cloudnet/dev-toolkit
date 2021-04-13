@@ -13,7 +13,7 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ../dataportal/backend/src:/app/src
+      - ../dataportal/backend:/app
       - ../dataportal/shared:/shared
       - ../dataportal-resources:/dataportal-resources
     env_file:
@@ -31,7 +31,7 @@ services:
       dataportal-backend:
         condition: service_started
     volumes:
-      - ../dataportal/backend/src:/app/src
+      - ../dataportal/backend:/app
       - ../dataportal/backend/tests:/app/tests
       - ../dataportal/shared:/shared
     env_file:
