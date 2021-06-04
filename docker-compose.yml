@@ -84,6 +84,7 @@ services:
         condition: service_started
     volumes:
       - ../storage-service/src:/app/src
+      - ../storage-service/tests:/app/tests
     env_file:
       - .env
     environment:
