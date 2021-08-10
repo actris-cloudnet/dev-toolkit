@@ -11,6 +11,7 @@ Before building this project, make sure that you have cloned the following Cloud
 - `pid-service`
 - `storage-service`
 - `dataportal-resources`
+- `misc-scripts`
 
 ## Build
 
