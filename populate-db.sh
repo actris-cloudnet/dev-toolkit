@@ -40,7 +40,6 @@ else
   resetdb dataportal
   psql dataportal < $cachefile_dp
 
-  export PGUSER=ss
   resetdb ss
-  psql ss < $cachefile_ss
+  psql -U ss ss < $cachefile_ss
 fi
