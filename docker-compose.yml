@@ -18,6 +18,8 @@ services:
       - ../dataportal-resources:/dataportal-resources
     env_file:
       - ../dataportal/backend/dev.env
+    environment:
+      - SS_MODE
     command: ["npm", "run", "start-dev"]
   dataportal-backend-test:
     image: dataportal-backend
@@ -36,6 +38,8 @@ services:
       - ../dataportal/shared:/shared
     env_file:
       - ../dataportal/backend/test.env
+    environment:
+      - SS_MODE=test
     command: ["npm", "run", "start-test"]
   db:
     image: "postgres:13"
