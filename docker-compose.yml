@@ -103,6 +103,8 @@ services:
     build: ../pid-service
     ports:
       - "5800:5800"
+    env_file:
+      - ../pid-service/.env
   data-processing:
     build: ../data-processing
     depends_on:
@@ -115,12 +117,3 @@ services:
       - ../data-processing/tests:/app/tests
     env_file:
       - ../data-processing/dev.env
-  misc-scripts:
-    build: ../misc-scripts
-    depends_on:
-      - "dataportal-backend"
-      - "storage-service"
-    volumes:
-      - ../misc-scripts/:/app
-    env_file:
-      - ../misc-scripts/dev.env

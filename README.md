@@ -11,7 +11,6 @@ Before building this project, make sure that you have cloned the following Cloud
 - `pid-service`
 - `storage-service`
 - `dataportal-resources`
-- `misc-scripts`
 
 ## Build
 
@@ -48,6 +47,10 @@ or
 If you are starting the system in local mode for the first time, you may need to [populate the dataportal database](https://github.com/actris-cloudnet/dataportal/#populating-the-database).
 
 ### Remote mode
+
+This mode is only available for developers that have access to `actris-cloudnet` private repositories.
+
+First, make sure that you have cloned the `secrets` repository from `actris-cloudnet`.
 
 To start the system in remote mode, issue:
 
