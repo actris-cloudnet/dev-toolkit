@@ -8,6 +8,8 @@ export PGPASSWORD=dev
 cachefile_dp="tmp/dataportal-db.sql"
 cachefile_ss="tmp/ss-db.sql"
 
+mkdir -p tmp
+
 function resetdb {
   dropdb $1
   createdb $1
