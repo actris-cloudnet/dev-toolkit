@@ -70,7 +70,6 @@ docker-compose down
 ## Additional scripts
 
 - `./populate-db.sh`: Download remote db. Uses a cached db file if such exists. To force re-download use `-u`.
-- `./reset-db.sh`: Delete all databases. The databases are recreated on `docker-compose up`. NOTE: dataportal backend will throw an error after this, since there is nothing in its db. You will need to populate the db after issuing this command.
 For instructions on how to populate the development db with test fixtures, see [here](https://github.com/actris-cloudnet/dataportal/#populating-the-database).
 
 ## Accessing database
