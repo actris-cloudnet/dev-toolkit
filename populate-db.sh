@@ -16,8 +16,8 @@ function resetdb {
 }
 
 docker-compose up -d db
-echo -n "Waiting for db... "
-until psql -c "select 1" > /dev/null 2>&1
+echo -n "Waiting for local db... "
+until docker-compose exec db psql -c "select 1" > /dev/null 2>&1
 do
   sleep 1
 done
