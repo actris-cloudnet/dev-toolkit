@@ -13,7 +13,8 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ../dataportal/backend:/app
+      - ../dataportal/backend/src:/app/src
+      - ../dataportal/backend/fixtures:/app/fixtures
       - ../dataportal/shared:/shared
       - ../dataportal-resources:/dataportal-resources
     env_file:
@@ -33,7 +34,8 @@ services:
       dataportal-backend:
         condition: service_started
     volumes:
-      - ../dataportal/backend:/app
+      - ../dataportal/backend/src:/app/src
+      - ../dataportal/backend/fixtures:/app/fixtures
       - ../dataportal/backend/tests:/app/tests
       - ../dataportal/shared:/shared
     env_file:
@@ -115,5 +117,6 @@ services:
       - ../data-processing/scripts:/app/scripts
       - ../data-processing/src:/app/src
       - ../data-processing/tests:/app/tests
+      - ../model-evaluation:/app/model-evaluation
     env_file:
-      - ../data-processing/dev.env
+      - ../data-processing/e2e-test.env
