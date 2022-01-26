@@ -3,14 +3,24 @@ Docker configuration for running all Cloudnet projects locally.
 
 The toolkit requires Docker version >=20 and docker-compose version >= 1.27.
 
-Before building this project, make sure that you have cloned the following Cloudnet repositories to the same directory:
+## Setup
 
-- `dev-toolkit`
-- `dataportal`
-- `data-processing`
-- `pid-service`
-- `storage-service`
-- `dataportal-resources`
+First create a directory for all repositories and clone this repository there:
+
+```shell
+mkdir cloudnet
+cd cloudnet
+git clone git@github.com:actris-cloudnet/dev-toolkit.git
+```
+
+Then run `fetch-repos.sh` to fetch other repositories:
+
+```shell
+cd dev-toolkit
+./fetch-repos.sh
+```
+
+You can later pull the latest changes by running `fetch-repos.sh` again.
 
 ## Build
 
