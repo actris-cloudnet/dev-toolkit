@@ -102,11 +102,15 @@ services:
       - S3_SECRETACCESSKEY
     command: ["npm", "run", "start-dev"]
   pid-service:
-    build: ../pid-service
+    build:
+      context: ../pid-service
+      target: dev
     ports:
       - "5800:5800"
     env_file:
       - ../pid-service/.env
+    volumes:
+      - ../pid-service:/app
   data-processing:
     build: ../data-processing
     depends_on:
