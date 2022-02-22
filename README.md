@@ -1,7 +1,7 @@
 # Cloudnet development toolkit
 Docker configuration for running all Cloudnet projects locally.
 
-The toolkit requires Docker version >=20 and docker-compose version >= 1.27.
+The toolkit requires Docker version ≥ 20 and Docker Compose version ≥ 2.2.
 
 ## Setup
 
