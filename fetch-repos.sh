@@ -2,10 +2,15 @@
 
 function fetch-repo {
   if [[ -d "../$1" ]]; then
-    echo "Pulling $1"
+    echo "Pulling '$1'"
     git -C "../$1" pull
+    current_branch="$(git -C "../$1" rev-parse --abbrev-ref HEAD)"
+    default_branch="$(git -C "../$1" remote show origin | sed -n '/HEAD branch/s/.*: //p')"
+    if [ "$current_branch" != "$default_branch" ]; then
+      echo "WARN: Current branch '$current_branch' is not the default branch '$default_branch'"
+    fi
   else
-    echo "Cloning $1"
+    echo "Cloning '$1'"
     git -C .. clone "git@github.com:actris-cloudnet/$1.git"
   fi
 }
