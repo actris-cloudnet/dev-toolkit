@@ -28,7 +28,7 @@ First, make sure that you have docker installed. After that:
 
 ```shell
 mkdir -p db/data
-docker-compose build
+docker compose build
 ```
 
 The first run will take a long time. Subsequent runs are faster.
@@ -43,7 +43,7 @@ and processing is disabled (data access is read only).
 To start the system in local mode, issue:
 
 ```shell
-docker-compose up
+docker compose up
 ```
 
 or
@@ -52,7 +52,7 @@ or
 ./start.sh local
 ```
 
-`start.sh` is a small wrapper around `docker-compose`.
+`start.sh` is a small wrapper around `docker compose`.
 
 If you are starting the system in local mode for the first time, you may need to [populate the dataportal database](https://github.com/actris-cloudnet/dataportal/#populating-the-database).
 
@@ -78,7 +78,7 @@ Stop containers by pressing `Ctrl+C`.
 Destroy containers by running:
 
 ```shell
-docker-compose down
+docker compose down
 ```
 
 ## Additional scripts
