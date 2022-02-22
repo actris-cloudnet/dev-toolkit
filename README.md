@@ -35,7 +35,7 @@ The first run will take a long time. Subsequent runs are faster.
 
 ## Run
 
-The system can be run in either local or remote mode. In remote mode storage-service will use production S3,
+The system can be run in either local or remote mode. In remote mode `storage-service` will use production S3,
 and processing is disabled (data access is read only).
 
 ### Local mode
@@ -73,6 +73,10 @@ After the local postgres instance has been populated, it is enough to issue `./s
 
 ## Stop
 
+Stop containers by pressing `Ctrl+C`.
+
+Destroy containers by running:
+
 ```shell
 docker-compose down
 ```
@@ -84,19 +88,18 @@ For instructions on how to populate the development db with test fixtures, see [
 
 ## Accessing database
 
-It is possible to access the database from the host computer using `psql`. Just make sure to source the correct environment variable with:
+It is possible to access the database from the host computer using `psql`.
+To access `dataportal` database, run:
 
-```shell
-source .env.host
+```sh
+docker compose exec db psql dataportal dataportal
 ```
 
-After that, you should be able to connect to the database with
+To access `storage-service` database, run:
 
-```shell
-psql
+```sh
+docker compose exec db psql ss ss
 ```
-
-It might be a good idea to source the host environment variables in `.bashrc`.
 
 ## Exposed ports
 
