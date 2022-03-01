@@ -123,4 +123,4 @@ services:
       - ../data-processing/tests:/app/tests
       - ../model-evaluation:/app/model-evaluation
     env_file:
-      - ../data-processing/e2e-test.env
+      - ../data-processing/dev.env
