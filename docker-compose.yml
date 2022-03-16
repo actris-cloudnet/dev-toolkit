@@ -12,6 +12,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      citation-service:
+        condition: service_started
     volumes:
       - ../dataportal/backend/src:/app/src
       - ../dataportal/backend/fixtures:/app/fixtures
@@ -124,3 +126,11 @@ services:
       - ../model-evaluation:/app/model-evaluation
     env_file:
       - ../data-processing/dev.env
+  citation-service:
+    build:
+      context: ../citation-service/service
+      target: dev
+    ports:
+      - "3005:80"
+    volumes:
+      - ../citation-service/service:/app
