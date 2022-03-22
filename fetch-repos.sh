@@ -12,15 +12,22 @@ function fetch-repo {
     if [ "$current_branch" != "$default_branch" ]; then
       echo "WARN: Current branch '$current_branch' is not the default branch '$default_branch'"
     fi
-  else
+  elif [ "$2" = true ]; then
     echo "Cloning '$1'"
     git -C .. clone "git@github.com:actris-cloudnet/$1.git"
   fi
 }
 
-fetch-repo dev-toolkit
-fetch-repo dataportal
-fetch-repo data-processing
-fetch-repo pid-service
-fetch-repo storage-service
-fetch-repo dataportal-resources
+# Required repositories.
+fetch-repo dev-toolkit true
+fetch-repo dataportal true
+fetch-repo data-processing true
+fetch-repo pid-service true
+fetch-repo storage-service true
+fetch-repo dataportal-resources true
+fetch-repo citation-service true
+
+# Optional repositories.
+fetch-repo cloudnetpy false
+fetch-repo cloudnetpy-qc false
+fetch-repo dataportal-docs false
