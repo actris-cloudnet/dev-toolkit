@@ -3,7 +3,10 @@
 function fetch-repo {
   if [[ -d "../$1" ]]; then
     echo "Pulling '$1'"
-    git -C "../$1" pull
+    if ! git -C "../$1" pull --ff-only; then
+      echo "ERROR: Conflicting changes detected. Please fix this manually."
+      return
+    fi
     current_branch="$(git -C "../$1" rev-parse --abbrev-ref HEAD)"
     default_branch="$(git -C "../$1" remote show origin | sed -n '/HEAD branch/s/.*: //p')"
     if [ "$current_branch" != "$default_branch" ]; then
