@@ -54,10 +54,9 @@ services:
       - "54321:5432"
     environment:
       TZ: "Europe/Helsinki"
-      POSTGRES_DB: $PGDATABASE
-      POSTGRES_USER: $PGUSER
-      POSTGRES_PASSWORD: $PGPASSWORD
-      PGUSER: ss
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGUSER: admin
     healthcheck:
      test: ["CMD", "psql", "-c", "select 1"]
      interval: 1s
