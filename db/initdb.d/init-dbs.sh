@@ -3,8 +3,8 @@ set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     CREATE USER ss WITH PASSWORD 'dev';
-    CREATE DATABASE ss;
-    GRANT ALL PRIVILEGES ON DATABASE ss TO ss;
-    CREATE DATABASE "dataportal-test";
-    GRANT ALL PRIVILEGES ON DATABASE "dataportal-test" TO dataportal;
+    CREATE DATABASE ss OWNER ss;
+    CREATE USER dataportal WITH PASSWORD 'dev';
+    CREATE DATABASE dataportal OWNER dataportal;
+    CREATE DATABASE "dataportal-test" OWNER dataportal;
 EOSQL
