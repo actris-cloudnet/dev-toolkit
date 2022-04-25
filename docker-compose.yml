@@ -15,8 +15,7 @@ services:
       citation-service:
         condition: service_started
     volumes:
-      - ../dataportal/backend/src:/app/src
-      - ../dataportal/backend/fixtures:/app/fixtures
+      - ../dataportal/backend:/app
       - ../dataportal/shared:/shared
       - ../dataportal-resources:/dataportal-resources
     env_file:
@@ -67,8 +66,7 @@ services:
       dockerfile: frontend/Dockerfile
       target: dev
     volumes:
-      - ../dataportal/frontend/src:/app/src
-      - ../dataportal/frontend/tests:/app/tests
+      - ../dataportal/frontend:/app
       - ../dataportal/shared:/shared
       - ../dataportal/backend/src:/backend/src
     ports:
