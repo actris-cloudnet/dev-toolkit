@@ -33,6 +33,13 @@ docker compose build
 
 The first run will take a long time. Subsequent runs are faster.
 
+Then install Node dependencies to your host system:
+
+```shell
+docker compose run dataportal-backend npm install
+docker compose run dataportal-frontend npm install
+```
+
 ## Run
 
 The system can be run in either local or remote mode. In remote mode `storage-service` will use production S3,
