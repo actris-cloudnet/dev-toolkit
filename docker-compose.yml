@@ -35,9 +35,7 @@ services:
       dataportal-backend:
         condition: service_started
     volumes:
-      - ../dataportal/backend/src:/app/src
-      - ../dataportal/backend/fixtures:/app/fixtures
-      - ../dataportal/backend/tests:/app/tests
+      - ../dataportal/backend:/app
       - ../dataportal/shared:/shared
     env_file:
       - ../dataportal/backend/test.env
