@@ -38,6 +38,7 @@ Then install Node dependencies to your host system:
 ```shell
 docker compose run dataportal-backend npm install
 docker compose run dataportal-frontend npm install
+docker compose run dataportal-frontend sh -c 'cd /shared && npm install'
 ```
 
 ## Run
