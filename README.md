@@ -41,6 +41,13 @@ docker compose run dataportal-frontend npm install
 docker compose run dataportal-frontend sh -c 'cd /shared && npm install'
 ```
 
+### Note for deploy
+
+If the commands above modify the dataportal package-lock.json files, do not push the changes into GitHub
+because the current production application is not yet dockerized. Thus, for deployment into
+production, you need to install Node dependencies locally without docker compose using
+`npm install` on dataportal `backend/`, `frontend/` and `shared/` folders.
+
 ## Run
 
 The system can be run in either local or remote mode. In remote mode `storage-service` will use production S3,
