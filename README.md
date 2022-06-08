@@ -22,6 +22,15 @@ cd dev-toolkit
 
 You can later pull the latest changes by running `fetch-repos.sh` again.
 
+## Unlock encrypted files
+
+Unlock encrypted pid-service test-credentials:
+
+```shell
+cd pid-service/
+git-crypt unlock
+```
+
 ## Build
 
 First, make sure that you have docker installed. After that:
@@ -75,7 +84,7 @@ If you are starting the system in local mode for the first time, you may need to
 
 This mode is only available for developers that have access to `actris-cloudnet` private repositories.
 
-First, make sure that you have cloned the `secrets` repository from `actris-cloudnet`.
+First, make sure that you have cloned the `secrets` repository from `actris-cloudnet` and unlocked them using `git-crypt unlock`.
 
 To start the system in remote mode, issue:
 
