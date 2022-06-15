@@ -50,6 +50,12 @@ docker compose run dataportal-frontend npm install
 docker compose run dataportal-frontend sh -c 'cd /shared && npm install'
 ```
 
+To destroy existing containers, and build & install the project from the scratch, you can issue:
+
+```shell
+./clean_install.sh
+```
+
 ### Note for deploy
 
 If the commands above modify the dataportal package-lock.json files, do not push the changes into GitHub
