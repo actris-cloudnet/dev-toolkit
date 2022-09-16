@@ -126,6 +126,6 @@ services:
       context: ../citation-service/service
       target: dev
     ports:
-      - "3005:80"
+      - "3005:8080"
     volumes:
       - ../citation-service/service:/app
