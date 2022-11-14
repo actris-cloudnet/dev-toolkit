@@ -3,22 +3,19 @@
 set -eo pipefail
 shopt -s expand_aliases
 
-cachefile_dp="tmp/dataportal-db.sql"
-cachefile_ss="tmp/ss-db.sql"
+cachefile_dp="tmp/dataportal-db.sql.gz"
+cachefile_ss="tmp/ss-db.sql.gz"
 
 mkdir -p tmp
 
 if [ "$1" == '-u' ] || [ ! -f "$cachefile_dp" ] || [ ! -f "$cachefile_ss" ]; then
   echo "Fetching remote db..."
-  if [ -z "$DATAPORTAL_SSH" ] || [ -z "$CLOUDNET_SSH" ]; then
-    echo "Environment variables DATAPORTAL_SSH and CLOUDNET_SSH must be set, i.e user@host"
-    exit 1
-  fi
+  oc project cloudnet-app > /dev/null
   echo -n "Fetching dataportal dump... "
-  ssh -C "$DATAPORTAL_SSH" "pg_dump dataportal" > $cachefile_dp
+  oc exec deploy/postgres -- sh -c "pg_dump -U dataportal dataportal | gzip" > $cachefile_dp
   echo "OK"
   echo -n "Fetching ss dump... "
-  ssh -C "$CLOUDNET_SSH" "pg_dump ss" > $cachefile_ss
+  oc exec deploy/postgres -- sh -c "pg_dump -U ss ss | gzip" > $cachefile_ss
   echo "OK"
 else
   echo "Using cached dumps..."
@@ -41,7 +38,7 @@ done
 echo "OK"
 
 resetdb dataportal dataportal
-psql dataportal dataportal < $cachefile_dp
+gunzip -c $cachefile_dp | psql dataportal dataportal
 
 resetdb ss ss
-psql ss ss < $cachefile_ss
+gunzip -c $cachefile_ss | psql ss ss
