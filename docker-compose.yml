@@ -86,8 +86,7 @@ services:
       moto-server:
         condition: service_started
     volumes:
-      - ../storage-service/src:/app/src
-      - ../storage-service/tests:/app/tests
+      - ../storage-service:/app
     env_file:
       - .env
     environment:

@@ -48,6 +48,7 @@ Then install Node dependencies to your host system:
 docker compose run dataportal-backend npm install
 docker compose run dataportal-frontend npm install
 docker compose run dataportal-frontend sh -c 'cd /shared && npm install'
+docker compose run storage-service npm install
 ```
 
 To destroy existing containers, and build & install the project from the scratch, you can issue:
