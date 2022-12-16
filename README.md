@@ -1,4 +1,5 @@
 # Cloudnet development toolkit
+
 Docker configuration for running all Cloudnet projects locally.
 
 The toolkit requires Docker version ≥ 20 and Docker Compose version ≥ 2.2.
@@ -21,15 +22,6 @@ cd dev-toolkit
 ```
 
 You can later pull the latest changes by running `fetch-repos.sh` again.
-
-## Unlock encrypted files
-
-Unlock encrypted pid-service test-credentials:
-
-```shell
-cd pid-service/
-git-crypt unlock
-```
 
 ## Build
 
@@ -57,12 +49,14 @@ To destroy existing containers, and build & install the project from the scratch
 ./clean_install.sh
 ```
 
-### Note for deploy
+## Unlock encrypted files (only internal developers)
 
-If the commands above modify the dataportal package-lock.json files, do not push the changes into GitHub
-because the current production application is not yet dockerized. Thus, for deployment into
-production, you need to install Node dependencies locally without docker compose using
-`npm install` on dataportal `backend/`, `frontend/` and `shared/` folders.
+Unlock encrypted pid-service test credentials:
+
+```shell
+cd pid-service/
+git-crypt unlock
+```
 
 ## Run
 
@@ -87,9 +81,7 @@ or
 
 If you are starting the system in local mode for the first time, you may need to [populate the dataportal database](https://github.com/actris-cloudnet/dataportal/#populating-the-database).
 
-### Remote mode
-
-This mode is only available for developers that have access to `actris-cloudnet` private repositories.
+### Remote mode (only internal developers)
 
 First, make sure that you have cloned the `secrets` repository from `actris-cloudnet` and unlocked them using `git-crypt unlock`.
 
@@ -138,9 +130,11 @@ The following ports are exposed from the containers to `localhost`:
 - `8080` Development frontend
 - `3000` Development backend
 - `3001` Test backend
+- `3005` Citation service
 - `5800` PID service
 - `5900` Storage service
-- `54321` Postgres db
+- `54321` PostgreSQL
+- `8086` InfluxDB
 - `5921` Storage service mock (for tests)
 
 ## License
