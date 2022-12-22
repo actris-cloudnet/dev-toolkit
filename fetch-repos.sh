@@ -22,7 +22,7 @@ function fetch-repo {
 # Required repositories.
 fetch-repo dev-toolkit true
 fetch-repo dataportal true
-fetch-repo data-processing true
+fetch-repo cloudnet-processing true
 fetch-repo pid-service true
 fetch-repo storage-service true
 fetch-repo dataportal-resources true
