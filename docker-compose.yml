@@ -66,12 +66,13 @@ services:
     volumes:
       - ../dataportal/frontend:/app
       - ../dataportal/shared:/shared
-      - ../dataportal/backend/src:/backend/src
     ports:
       - "8080:8080"
     environment:
-      - VUE_APP_BACKENDURL=http://localhost:3000/api/
-    command: ["npm", "run", "serve"]
+      - VITE_BACKEND_URL=http://localhost:3000/api/
+    depends_on:
+      dataportal-backend:
+        condition: service_started
   moto-server:
     image: "motoserver/moto:3.0.1"
   storage-service:
