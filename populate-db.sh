@@ -3,8 +3,8 @@
 set -eo pipefail
 shopt -s expand_aliases
 
-cachefile_dp="tmp/dataportal-db.sql.gz"
-cachefile_ss="tmp/ss-db.sql.gz"
+cachefile_dp="tmp/dataportal-db.sql"
+cachefile_ss="tmp/ss-db.sql"
 
 mkdir -p tmp
 
@@ -12,10 +12,10 @@ if [ "$1" == '-u' ] || [ ! -f "$cachefile_dp" ] || [ ! -f "$cachefile_ss" ]; the
   echo "Fetching remote db..."
   oc project cloudnet-app > /dev/null
   echo -n "Fetching dataportal dump... "
-  oc exec deploy/postgres -- sh -c "pg_dump -U dataportal dataportal | gzip" > $cachefile_dp
+  oc exec deploy/postgres -- pg_dump -U dataportal dataportal > $cachefile_dp
   echo "OK"
   echo -n "Fetching ss dump... "
-  oc exec deploy/postgres -- sh -c "pg_dump -U ss ss | gzip" > $cachefile_ss
+  oc exec deploy/postgres -- pg_dump -U ss ss > $cachefile_ss
   echo "OK"
 else
   echo "Using cached dumps..."
@@ -38,7 +38,7 @@ done
 echo "OK"
 
 resetdb dataportal dataportal
-gunzip -c $cachefile_dp | psql dataportal dataportal
+psql dataportal dataportal < $cachefile_dp
 
 resetdb ss ss
-gunzip -c $cachefile_ss | psql ss ss
+psql ss ss < $cachefile_ss
