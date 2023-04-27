@@ -118,7 +118,8 @@ services:
       - ../cloudnet-processing/scripts:/app/scripts
       - ../cloudnet-processing/src:/app/src
       - ../cloudnet-processing/tests:/app/tests
-      - ../model-evaluation:/app/model-evaluation
+      - ../cloudnet-processing/download:/app/download
+      - ../cloudnetpy:/cloudnetpy
     env_file:
       - ../cloudnet-processing/dev.env
     environment:
