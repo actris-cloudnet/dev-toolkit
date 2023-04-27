@@ -12,10 +12,10 @@ if [ "$1" == '-u' ] || [ ! -f "$cachefile_dp" ] || [ ! -f "$cachefile_ss" ]; the
   echo "Fetching remote db..."
   oc project cloudnet-app > /dev/null
   echo -n "Fetching dataportal dump... "
-  oc exec deploy/postgres -- pg_dump -U dataportal dataportal > $cachefile_dp
+  oc exec deploy/postgres -- pg_dump -U dataportal_ro dataportal > $cachefile_dp
   echo "OK"
   echo -n "Fetching ss dump... "
-  oc exec deploy/postgres -- pg_dump -U ss ss > $cachefile_ss
+  oc exec deploy/postgres -- pg_dump -U ss_ro ss > $cachefile_ss
   echo "OK"
 else
   echo "Using cached dumps..."
