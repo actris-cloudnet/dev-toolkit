@@ -25,7 +25,7 @@ You can later pull the latest changes by running `fetch-repos.sh` again.
 
 ## Build
 
-First, make sure that you have docker installed. After that:
+First, make sure that you have Docker installed. After that:
 
 ```shell
 mkdir -p db/data
@@ -42,6 +42,14 @@ docker compose run dataportal-frontend npm install
 docker compose run dataportal-frontend sh -c 'cd /shared && npm install'
 docker compose run storage-service npm install
 ```
+
+Finally, configure data portal environment variables:
+
+```shell
+cp ../dataportal/backend/dev.env.template ../dataportal/backend/dev.env
+```
+
+To enable DOI minting, You need to the update your `dev.env` with correct credentials.
 
 To destroy existing containers, and build & install the project from the scratch, you can issue:
 
