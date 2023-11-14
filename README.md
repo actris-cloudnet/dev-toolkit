@@ -122,13 +122,13 @@ For instructions on how to populate the development db with test fixtures, see [
 To access `dataportal` database, run:
 
 ```sh
-docker compose run pgcli dataportal
+docker compose exec db psql dataportal
 ```
 
 To access `storage-service` database, run:
 
 ```sh
-docker compose run pgcli ss
+docker compose exec db psql ss
 ```
 
 ## Exposed ports
