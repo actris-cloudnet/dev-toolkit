@@ -149,13 +149,6 @@ services:
       DOCKER_INFLUXDB_INIT_ORG: cloudnet
       DOCKER_INFLUXDB_INIT_BUCKET: housekeeping
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: super-secret-token
-  pgcli:
-    build: pgcli
-    depends_on: [db]
-    environment:
-      PGHOST: db
-      PGUSER: admin
-      PGPASSWORD: admin
 
 volumes:
   influxdb-data-volume:
