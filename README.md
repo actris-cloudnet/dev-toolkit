@@ -119,15 +119,24 @@ For instructions on how to populate the development db with test fixtures, see [
 
 ## Accessing database
 
-To access `dataportal` database, run:
+It's recommended to install [pgcli](https://www.pgcli.com/) for interactive use.
+After installation, run the following command to access `dataportal` database:
 
 ```sh
-docker compose exec db psql dataportal
+./connect-to-database.sh dataportal
 ```
 
 To access `storage-service` database, run:
 
 ```sh
+./connect-to-database.sh ss
+```
+
+In some cases, you might want to connect straight to the database.
+Then use the following commands:
+
+```sh
+docker compose exec db psql dataportal
 docker compose exec db psql ss
 ```
 
