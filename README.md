@@ -96,7 +96,7 @@ First, make sure that you have cloned the `secrets` repository from `actris-clou
 To start the system in remote mode, issue:
 
 ```shell
-./populate-db.sh # Download remote dbs
+./populate-db-recent.sh # Download remote dbs
 ./start.sh remote # Start in remote mode, you will be asked for your GPG password
 ```
 
@@ -114,8 +114,9 @@ docker compose down
 
 ## Additional scripts
 
-- `./populate-db.sh`: Download remote db. Uses a cached db file if such exists. To force re-download use `-u`.
-For instructions on how to populate the development db with test fixtures, see [here](https://github.com/actris-cloudnet/dataportal/#populating-the-database).
+- `./populate-db-recent.sh`: Download recent data from remote DB.
+- `./populate-db-full.sh`: Download remote DB. Uses a cached DB file if such exists. To force re-download use `-u`.
+For instructions on how to populate the development DB with test fixtures, see [here](https://github.com/actris-cloudnet/dataportal/#populating-the-database).
 
 ## Accessing database
 
