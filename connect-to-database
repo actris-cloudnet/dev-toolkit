@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+dbname=${1:-dataportal}
+port="$(docker compose port db 5432)"
+pgcli "postgresql://$dbname:dev@$port/$dbname"
