@@ -55,9 +55,9 @@ services:
       POSTGRES_PASSWORD: admin
       PGUSER: admin
     healthcheck:
-     test: ["CMD", "psql", "-c", "select 1"]
-     interval: 1s
-     retries: 120
+      test: ["CMD", "psql", "-c", "select 1"]
+      interval: 1s
+      retries: 120
   dataportal-frontend:
     build:
       context: ../dataportal

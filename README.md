@@ -116,6 +116,7 @@ docker compose down
 
 - `./populate-db-recent.sh`: Download recent data from remote DB.
 - `./populate-db-full.sh`: Download remote DB. Uses a cached DB file if such exists. To force re-download use `-u`.
+
 For instructions on how to populate the development DB with test fixtures, see [here](https://github.com/actris-cloudnet/dataportal/#populating-the-database).
 
 ## Accessing database
