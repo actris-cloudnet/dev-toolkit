@@ -119,6 +119,11 @@ services:
       - ../cloudnet-processing/tests:/app/tests
       - ../cloudnet-processing/download:/app/download
       - ../cloudnetpy:/cloudnetpy
+      - ../cloudnetpy-qc:/cloudnetpy-qc
+      - ../doppy:/doppy
+      - ../mwrpy:/mwrpy
+      - ../rpgpy:/rpgpy
+      - ../voodoonet:/voodoonet
     env_file:
       - ../cloudnet-processing/dev.env
     environment:

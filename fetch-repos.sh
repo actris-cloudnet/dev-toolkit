@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function fetch-repo {
-  if [[ -d "../$1" ]]; then
+  if [[ -d "../$1/.git" ]]; then
     echo "Pulling '$1'"
     if ! git -C "../$1" pull --ff-only; then
       echo "ERROR: Conflicting changes detected. Please fix this manually."
@@ -32,3 +32,7 @@ fetch-repo citation-service true
 fetch-repo cloudnetpy false
 fetch-repo cloudnetpy-qc false
 fetch-repo dataportal-docs false
+fetch-repo doppy false
+fetch-repo mwrpy false
+fetch-repo rpgpy false
+fetch-repo voodoonet false
