@@ -72,6 +72,22 @@ services:
     depends_on:
       dataportal-backend:
         condition: service_started
+  # Run production nginx locally:
+  # dataportal-frontend:
+  #   build:
+  #     context: ../dataportal
+  #     dockerfile: frontend/Dockerfile
+  #     target: prod
+  #     args:
+  #       - BACKEND_URL=http://localhost:3000/api/
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - DP_BACKEND_URL=http://localhost:3000/api/
+  #     - MAINTENANCE=0
+  #   depends_on:
+  #     dataportal-backend:
+  #       condition: service_started
   moto-server:
     image: "motoserver/moto:3.0.1"
   storage-service:
