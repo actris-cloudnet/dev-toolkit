@@ -1,9 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-docker compose down
-
-sudo rm -rf db/data
-mkdir -p db/data
+./clean_db.sh
 
 docker compose build
 
