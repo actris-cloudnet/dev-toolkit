@@ -124,7 +124,9 @@ services:
     volumes:
       - ../pid-service:/app
   cloudnet-processing:
-    build: ../cloudnet-processing
+    build:
+      context: ../cloudnet-processing
+      target: dev
     depends_on:
       - "dataportal-backend"
       - "storage-service"
