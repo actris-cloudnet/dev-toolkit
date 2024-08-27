@@ -37,10 +37,10 @@ The first run will take a long time. Subsequent runs are faster.
 Then install Node dependencies to your host system:
 
 ```shell
-docker compose run dataportal-backend npm install
-docker compose run dataportal-frontend npm install
-docker compose run dataportal-frontend sh -c 'cd /shared && npm install'
-docker compose run storage-service npm install
+docker compose run --rm dataportal-backend npm install
+docker compose run --rm dataportal-frontend npm install
+docker compose run --rm dataportal-frontend sh -c 'cd /shared && npm install'
+docker compose run --rm storage-service npm install
 ```
 
 Finally, configure data portal environment variables:
