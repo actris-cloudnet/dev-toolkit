@@ -54,7 +54,7 @@ To enable DOI minting, You need to the update your `dev.env` with correct creden
 To destroy existing containers, and build & install the project from the scratch, you can issue:
 
 ```shell
-./clean_install.sh
+./clean-install.sh
 ```
 
 ## Unlock encrypted files (only internal developers)

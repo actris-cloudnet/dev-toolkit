@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./clean_db.sh
+./clean-db.sh
 
 docker compose build
 
