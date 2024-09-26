@@ -151,12 +151,12 @@ services:
       INFLUXDB_TOKEN: super-secret-token
   citation-service:
     build:
-      context: ../citation-service/service
+      context: ../citation-service
       target: dev
     ports:
       - "3005:8080"
     volumes:
-      - ../citation-service/service:/app
+      - ../citation-service:/app
   influxdb:
     image: influxdb:2.3.0
     volumes:
