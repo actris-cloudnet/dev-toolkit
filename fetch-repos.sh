@@ -25,7 +25,7 @@ fetch-repo dataportal true
 fetch-repo cloudnet-processing true
 fetch-repo pid-service true
 fetch-repo storage-service true
-fetch-repo dataportal-resources true
+fetch-repo dataportal-fixtures true
 fetch-repo citation-service true
 
 # Optional repositories.

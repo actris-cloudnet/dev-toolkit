@@ -16,7 +16,7 @@ services:
     volumes:
       - ../dataportal/backend:/app
       - ../dataportal/shared:/shared
-      - ../dataportal-resources:/dataportal-resources
+      - ../dataportal-fixtures:/dataportal-fixtures
     env_file:
       - ../dataportal/backend/dev.env
     environment:
