@@ -153,7 +153,7 @@ The following ports are exposed from the containers to `localhost`:
 - `5800` PID service
 - `5900` Storage service
 - `54321` PostgreSQL
-- `8086` InfluxDB (username: admin, password: admin)
+- `8086` InfluxDB (username: `admin`, password: `password`)
 - `5921` Storage service mock (for tests)
 
 ## License
