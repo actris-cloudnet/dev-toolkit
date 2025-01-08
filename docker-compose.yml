@@ -168,3 +168,5 @@ services:
       DOCKER_INFLUXDB_INIT_ORG: cloudnet
       DOCKER_INFLUXDB_INIT_BUCKET: housekeeping
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: super-secret-token
+      INFLUX_TOKEN: super-secret-token
+      INFLUX_ORG: cloudnet
