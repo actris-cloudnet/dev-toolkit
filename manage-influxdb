@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+echo 'Use `influx` command, see https://docs.influxdata.com/influxdb/cloud/reference/cli/influx/'
+docker compose exec influxdb /bin/bash -c 'bash --rcfile <(echo "source <(influx completion bash)")'
