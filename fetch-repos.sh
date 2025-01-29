@@ -36,3 +36,4 @@ fetch-repo doppy false
 fetch-repo mwrpy false
 fetch-repo rpgpy false
 fetch-repo voodoonet false
+fetch-repo model-munger false

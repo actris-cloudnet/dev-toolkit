@@ -142,6 +142,7 @@ services:
       - ../mwrpy:/mwrpy
       - ../rpgpy:/rpgpy
       - ../voodoonet:/voodoonet
+      - ../model-munger:/model-munger
     env_file:
       - ../cloudnet-processing/dev.env
     environment:
