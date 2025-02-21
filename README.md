@@ -34,7 +34,15 @@ docker compose build
 
 The first run will take a long time. Subsequent runs are faster.
 
-Then install Node dependencies to your host system:
+Then, configure data portal environment variables:
+
+```shell
+cp ../dataportal/backend/dev.env.template ../dataportal/backend/dev.env
+```
+
+To enable DOI minting, You need to the update your `dev.env` with correct credentials.
+
+Then, install Node dependencies to your host system:
 
 ```shell
 docker compose run --rm dataportal-backend npm install
@@ -42,14 +50,6 @@ docker compose run --rm dataportal-frontend npm install
 docker compose run --rm dataportal-frontend sh -c 'cd /shared && npm install'
 docker compose run --rm storage-service npm install
 ```
-
-Finally, configure data portal environment variables:
-
-```shell
-cp ../dataportal/backend/dev.env.template ../dataportal/backend/dev.env
-```
-
-To enable DOI minting, You need to the update your `dev.env` with correct credentials.
 
 To destroy existing containers, and build & install the project from the scratch, you can issue:
 
