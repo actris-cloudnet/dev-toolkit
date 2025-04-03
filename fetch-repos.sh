@@ -37,3 +37,4 @@ fetch-repo mwrpy false
 fetch-repo rpgpy false
 fetch-repo voodoonet false
 fetch-repo model-munger false
+fetch-repo cloudnet-api-client false

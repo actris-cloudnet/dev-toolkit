@@ -143,6 +143,7 @@ services:
       - ../rpgpy:/rpgpy
       - ../voodoonet:/voodoonet
       - ../model-munger:/model-munger
+      - ../cloudnet-api-client:/cloudnet-api-client
     env_file:
       - ../cloudnet-processing/dev.env
     environment:
