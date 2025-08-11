@@ -106,13 +106,17 @@ services:
     env_file:
       - .env
     environment:
-      - SS_MODE
       - PGUSER=ss
       - PGDATABASE=ss
       - S3_ENDPOINT
       - S3_ACCESSKEYID
       - S3_SECRETACCESSKEY
-    command: ["npm", "run", "start-dev"]
+    command:
+      [
+        "sh",
+        "-c",
+        '[ "$SS_MODE" = "remote" ] || npm run init-buckets && npm run start-dev',
+      ]
   pid-service:
     build:
       context: ../pid-service
