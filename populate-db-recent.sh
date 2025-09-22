@@ -64,6 +64,11 @@ COPY (SELECT quality_report.*
       ON quality_report."qualityUuid" = search_file.uuid
       WHERE "measurementDate" >= '$start_date') TO STDOUT;
 SQL
+oc exec service/postgres -i -- psql -U dataportal_ro dataportal > "$tmp_dir/download.sql" << SQL
+COPY (SELECT download.*
+      FROM download
+      WHERE "createdAt" >= '$start_date') TO STDOUT;
+SQL
 
 oc exec service/postgres -- pg_dump -U dataportal_ro dataportal --exclude-table-data="download|instrument_upload|model_upload|regular_file|model_file|search_file|collection_model_files_model_file|model_file_software_software|regular_file_software_software|collection_regular_files_regular_file|model_visualization|visualization|file_quality|quality_report" > $cachefile_dp
 
@@ -97,7 +102,7 @@ echo "OK"
 echo "Inserting data..."
 resetdb dataportal dataportal
 psql dataportal dataportal < "$cachefile_dp"
-for table in instrument_upload model_upload regular_file model_file search_file collection_model_files_model_file model_file_software_software regular_file_software_software collection_regular_files_regular_file model_visualization visualization file_quality quality_report; do
+for table in instrument_upload model_upload regular_file model_file search_file collection_model_files_model_file model_file_software_software regular_file_software_software collection_regular_files_regular_file model_visualization visualization file_quality quality_report download; do
   psql dataportal dataportal -c "COPY \"$table\" FROM STDIN;" < "$tmp_dir/$table.sql"
 done
 
