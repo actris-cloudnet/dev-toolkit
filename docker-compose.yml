@@ -142,6 +142,7 @@ services:
       - ../cloudnet-processing/download:/app/download
       - ../cloudnetpy:/cloudnetpy
       - ../cloudnetpy-qc:/cloudnetpy-qc
+      - ../earthcare-downloader:/earthcare-downloader
       - ../doppy:/doppy
       - ../mwrpy:/mwrpy
       - ../rpgpy:/rpgpy
