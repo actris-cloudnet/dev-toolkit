@@ -150,6 +150,7 @@ The following ports are exposed from the containers to `localhost`:
 - `3000` Development backend
 - `3001` Test backend
 - `3005` Citation service
+- `5000` Moto server (S3)
 - `5800` PID service
 - `5900` Storage service
 - `54321` PostgreSQL

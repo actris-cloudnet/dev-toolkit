@@ -90,6 +90,8 @@ services:
   #       condition: service_started
   moto-server:
     image: "motoserver/moto:3.0.1"
+    ports:
+      - "5000:5000"
   storage-service:
     build:
       context: ../storage-service
