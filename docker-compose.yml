@@ -40,8 +40,6 @@ services:
       - ../dataportal/shared:/shared
     env_file:
       - ../dataportal/backend/test.env
-    environment:
-      - SS_MODE=test
     command: ["npm", "run", "start-test"]
   db:
     image: "postgres:16"
