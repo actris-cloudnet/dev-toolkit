@@ -2,6 +2,7 @@ services:
   dataportal-backend:
     image: dataportal-backend
     pull_policy: never
+    init: true
     build:
       context: ../dataportal
       dockerfile: backend/Dockerfile
@@ -25,6 +26,7 @@ services:
   dataportal-backend-test:
     image: dataportal-backend
     pull_policy: never
+    init: true
     ports:
       - "3001:3000"
       - "5921:5920"
@@ -58,6 +60,7 @@ services:
       interval: 1s
       retries: 120
   dataportal-frontend:
+    init: true
     build:
       context: ../dataportal
       dockerfile: frontend/Dockerfile
@@ -93,6 +96,7 @@ services:
     ports:
       - "5000:5000"
   storage-service:
+    init: true
     build:
       context: ../storage-service
       target: dev
