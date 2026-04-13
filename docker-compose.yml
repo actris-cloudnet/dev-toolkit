@@ -156,6 +156,7 @@ services:
       - ../model-munger:/model-munger
       - ../cloudnet-api-client:/cloudnet-api-client
       - ../ceilopyter:/ceilopyter
+      - ../orbital-radar:/orbital-radar
     env_file:
       - ../cloudnet-processing/dev.env
     environment:
