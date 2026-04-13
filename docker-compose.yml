@@ -2,6 +2,7 @@ services:
   dataportal-backend:
     image: dataportal-backend
     pull_policy: never
+    init: true
     build:
       context: ../dataportal
       dockerfile: backend/Dockerfile
@@ -25,6 +26,7 @@ services:
   dataportal-backend-test:
     image: dataportal-backend
     pull_policy: never
+    init: true
     ports:
       - "3001:3000"
       - "5921:5920"
@@ -38,8 +40,6 @@ services:
       - ../dataportal/shared:/shared
     env_file:
       - ../dataportal/backend/test.env
-    environment:
-      - SS_MODE=test
     command: ["npm", "run", "start-test"]
   db:
     image: "postgres:16"
@@ -58,6 +58,7 @@ services:
       interval: 1s
       retries: 120
   dataportal-frontend:
+    init: true
     build:
       context: ../dataportal
       dockerfile: frontend/Dockerfile
@@ -89,10 +90,11 @@ services:
   #     dataportal-backend:
   #       condition: service_started
   moto-server:
-    image: "motoserver/moto:3.0.1"
+    image: "motoserver/moto:5.1.22"
     ports:
       - "5000:5000"
   storage-service:
+    init: true
     build:
       context: ../storage-service
       target: dev
@@ -152,6 +154,7 @@ services:
       - ../model-munger:/model-munger
       - ../cloudnet-api-client:/cloudnet-api-client
       - ../ceilopyter:/ceilopyter
+      - ../orbital-radar:/orbital-radar
     env_file:
       - ../cloudnet-processing/dev.env
     environment:
