@@ -90,7 +90,7 @@ services:
   #     dataportal-backend:
   #       condition: service_started
   moto-server:
-    image: "motoserver/moto:3.0.1"
+    image: "motoserver/moto:5.1.22"
     ports:
       - "5000:5000"
   storage-service:
