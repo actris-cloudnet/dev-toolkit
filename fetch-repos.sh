@@ -39,3 +39,4 @@ fetch-repo voodoonet false
 fetch-repo model-munger false
 fetch-repo cloudnet-api-client false
 fetch-repo ceilopyter false
+fetch-repo atmoslib false
